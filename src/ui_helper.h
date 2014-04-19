@@ -13,5 +13,7 @@
 
 void initUI(WINDOW **win, CDKSCREEN **screen);
 void createListBox(CDKSCREEN **screen, CDKSCROLL **listBox, char *items[], int count);
+void createMessageLabel(CDKSCREEN **screen, CDKLABEL **label, char *text);
+void createCommandEntry(CDKSCREEN **screen, CDKENTRY **entry);
 
 #endif
