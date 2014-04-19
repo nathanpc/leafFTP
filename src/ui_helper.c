@@ -32,7 +32,6 @@ void createListBox(CDKSCREEN **screen, CDKSCROLL **listBox, char *items[], int c
 							LINES - 2, COLS, "/home/nathanpc", items,
 							count, FALSE, A_REVERSE, TRUE, FALSE);
 
-	// Check if the Selection was create successfully.
 	if (*listBox == NULL) {
 		destroyCDKScreen(*screen);
 		endCDK();
