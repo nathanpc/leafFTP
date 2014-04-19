@@ -28,15 +28,8 @@ int main(int argc, char **argv) {
 	createMessageLabel(&cdkScreen, &msgLabel, "</B/24/>230 Login successful.");
 	drawCDKLabel(msgLabel, FALSE);
 
-
+	// Create the command entry box.
 	createCommandEntry(&cdkScreen, &txtCommand);
-	char *text = activateCDKEntry(txtCommand, NULL);
-	if (txtCommand->exitType == vNORMAL) {
-		char *msg[3] = { text, "", "<C>Press any key to continue." };
-		popupLabel(cdkScreen, msg, 3);
-	}
-
-
 
 	// Get selection.
 	int selection = activateCDKScroll(listBox, NULL);
@@ -50,6 +43,13 @@ int main(int argc, char **argv) {
 		char buffer[100];
 		sprintf(buffer, "<C>You've selected: %s", items[selection]);
 		char *msg[] = { buffer, "", "<C>Press any key to continue." };
+		popupLabel(cdkScreen, msg, 3);
+	}
+
+	// Get command.
+	char *text = activateCDKEntry(txtCommand, NULL);
+	if (txtCommand->exitType == vNORMAL) {
+		char *msg[3] = { text, "", "<C>Press any key to continue." };
 		popupLabel(cdkScreen, msg, 3);
 	}
 

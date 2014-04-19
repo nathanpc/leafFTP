@@ -7,12 +7,26 @@
 
 #include "ui_helper.h"
 
+/**
+ *  Initializes ncurses and CDK.
+ *
+ *  @param win ncurses window.
+ *  @param screen CDK screen.
+ */
 void initUI(WINDOW **win, CDKSCREEN **screen) {
 	*win = initscr();
 	*screen = initCDKScreen(*win);
 	initCDKColor();
 }
 
+/**
+ *  Creates a list box to serve as a file browser.
+ *
+ *  @param screen CDK screen.
+ *  @param listBox CDK scrool.
+ *  @param items Array of items (strings).
+ *  @param count Number of items.
+ */
 void createListBox(CDKSCREEN **screen, CDKSCROLL **listBox, char *items[], int count) {
 	*listBox = newCDKScroll(*screen, LEFT, TOP, RIGHT,
 							LINES - 2, COLS, "/home/nathanpc", items,
@@ -28,6 +42,13 @@ void createListBox(CDKSCREEN **screen, CDKSCROLL **listBox, char *items[], int c
 	}
 }
 
+/**
+ *  Creates a label to display the server messages.
+ *
+ *  @param screen CDK screen.
+ *  @param label CDK label.
+ *  @param text Label text.
+ */
 void createMessageLabel(CDKSCREEN **screen, CDKLABEL **label, char *text) {
 	char *msgs[] = { text };
 	*label = newCDKLabel(*screen, LEFT, LINES - 2, msgs, 1, FALSE, FALSE);
@@ -41,6 +62,12 @@ void createMessageLabel(CDKSCREEN **screen, CDKLABEL **label, char *text) {
 	}
 }
 
+/**
+ *  Creates a entry field to be used as a command prompt.
+ *
+ *  @param screen CDK screen.
+ *  @param entry CDK entry.
+ */
 void createCommandEntry(CDKSCREEN **screen, CDKENTRY **entry) {
 	*entry = newCDKEntry(*screen, LEFT, BOTTOM, NULL, "</B/>> <!B>",
 						 A_NORMAL, ' ', vMIXED, 0, 0, 256, FALSE, FALSE);
