@@ -10,6 +10,7 @@
 
 #include "ui_helper.h"
 
+void createWidgets();
 void loopUI();
 
 WINDOW *win = NULL;
@@ -23,17 +24,7 @@ char *items[] = { "Folder 1", "Folder 2", "Folder 3", "File 1.txt", "File 2.bin"
 int main(int argc, char **argv) {
 	// Initialize the windows.
 	initUI(&win, &cdkScreen);
-
-	// Create the list box.
-	createListBox(&cdkScreen, &listBox, items, 5);
-
-	// Create the server status label.
-	createMessageLabel(&cdkScreen, &msgLabel, "</B/24/>230 Login successful.");
-	drawCDKLabel(msgLabel, FALSE);
-
-	// Create the command entry box.
-	createCommandEntry(&cdkScreen, &txtCommand);
-
+	createWidgets();
 	loopUI();
 
 	// Clean up.
@@ -43,6 +34,18 @@ int main(int argc, char **argv) {
 	endCDK();
 
 	return EXIT_SUCCESS;
+}
+
+void createWidgets() {
+	// Create the list box.
+	createListBox(&cdkScreen, &listBox, items, 5);
+
+	// Create the server status label.
+	createMessageLabel(&cdkScreen, &msgLabel, "</B/24/>230 Login successful.");
+	drawCDKLabel(msgLabel, FALSE);
+
+	// Create the command entry box.
+	createCommandEntry(&cdkScreen, &txtCommand);
 }
 
 void loopUI() {
